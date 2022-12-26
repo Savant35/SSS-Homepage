@@ -1,0 +1,474 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+        Marron: hls(0,100%,25%)
+        gold: hls(51,100%,50%)
+
+  */
+  --first-hue: 0;
+  --sat: 100%;
+  --lig: 25%;
+  --second-hue: 51;
+  --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
+  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
+  /*--title-color: hsl(var(--second-hue), 15%, 95%);*/
+  --title-color: hsl(var(--second-hue), 85%, 95%);
+  --text-color: hsl(var(--second-hue), 8%, 75%);
+  --text-color-light: hsl(var(--second-hue), 4%, 55%);
+  --body-color: hsl(var(--second-hue), 48%, 8%);
+  --container-color: hsl(var(--second-hue), 32%, 12%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 1.75rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --tiny-font-size: .625rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semibold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color)
+}
+a:hover{
+  border-bottom: 1px solid var(--first-color);
+}
+
+button,.hamburger {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 968px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+.section {
+  padding: .1rem 0 1rem;
+}
+
+.section__title, 
+.section__subtitle {
+  text-align: center;
+}
+
+.section__title {
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-bottom: 2rem;
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+}
+
+/*=============== HEADER & NAV===============*/
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--body-color);
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__menu{
+  position: fixed;
+  background-color: hsla(var(--second-hue),32%,16%,.8);
+  /*top: 4rem;*/
+  top: -101%;
+  max-width: 968px;
+  width: 96%;
+  height: 100vh;
+  padding: 1rem 2.25rem;
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: 49% 49%;
+  transition: .4s;
+}
+
+.nav__menu.is__active{
+  top: 3.5rem;
+}
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.helpful__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.helpful__links{
+  height: 100%;
+  text-align: space-between;
+}
+.helpful__links .nav__list{
+  height: 84%;
+}
+.helpful__info div{
+  text-align:center;
+}
+.helpful__info h3{
+  margin-bottom: 1rem;
+
+}
+.quick__access{
+  flex-direction: row;
+}
+.nav__link {
+  color: var(--text-color);
+  font-size: 1.25rem;
+  display: flex;
+  padding: .4rem;
+}
+.hamburger{
+  padding: .4rem;
+}
+.hamburger img{
+  width:25px;
+  height: 25px;
+}
+
+/*=============== HOME ===============*/
+.home__container{
+  background-image: url(./assets/img/erie-campus11.jpg);
+  background-size:cover;
+  height: 400px;
+  position: relative;
+}
+.home__container h1{
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 2rem;
+}
+
+
+
+/*=============== ABOUT SSS===============*/
+.SSS__container{
+  row-gap: 2.5rem;
+  background-color:var(--body-color);
+}
+
+.student__img{
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+.slider{
+  width: 100%;
+  height: 400px;
+  border-radius: 1rem;
+  justify-self: center;
+  overflow: hidden;
+  position:relative;
+}
+.slides{
+  width:700%; /*total percentage of all slides put together*/
+  height: 100%;;
+  display: flex;
+}
+.slide{
+  width: 15%;/*percentage of each slide the picture will take 7 picture so 1/7*/
+  height: 100%;
+  box-sizing: border-box;
+  transition: 1s;
+}
+.slides input{
+  display: none;
+}
+.navigation__auto{
+  width: 100%;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  bottom: 1rem;
+}
+.navigation__auto div{
+  border: 1px solid white;
+  padding: 5px;
+  border-radius:10px;
+  cursor: pointer;
+  transition: 1s;
+  font-size:0px;
+}
+.navigation__auto div:not(:last-child){
+  margin-right:40px;
+}
+#radio1:checked ~ .navigation__auto .auto__bn1{
+  background-color:blue;
+}
+#radio2:checked ~ .navigation__auto .auto__bn2{
+  background-color:blue;
+}
+#radio3:checked ~ .navigation__auto .auto__bn3{
+  background-color:blue;
+}
+#radio4:checked ~ .navigation__auto .auto__bn4{
+  background-color:blue;
+}
+#radio5:checked ~ .navigation__auto .auto__bn5{
+  background-color:blue;
+}
+#radio6:checked ~ .navigation__auto .auto__bn6{
+  background-color:blue;
+}
+#radio7:checked ~ .navigation__auto .auto__bn7{
+  background-color:blue;
+}
+.navigation__manual{
+  width: 100%;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  bottom: 1rem;
+
+}
+.manual__btn{
+  border: 1px solid gold;
+  padding: 5px;
+  border-radius:10px;
+  cursor: pointer;
+  transition: 2s;
+  font-size:0px;
+}
+.manual__btn:not(:last-child){
+  margin-right:40px;
+}
+.manual__btn:hover{
+  background-color:blue;
+}
+#radio1:checked ~ .first{
+  margin-left: 0%;
+}
+#radio2:checked ~ .first{
+  margin-left: -15%;
+}
+#radio3:checked ~ .first{
+  margin-left: -30%;
+}
+#radio4:checked ~ .first{
+  margin-left: -45%;
+}
+#radio5:checked ~ .first{
+  margin-left: -60%;
+}
+#radio6:checked ~ .first{
+  margin-left: -75%;
+}
+#radio7:checked ~ .first{
+  margin-left: -90%;
+}
+.SSS__links{
+  display: flex;
+  flex-direction: row;
+}
+.SSS__link{
+  margin: .2rem;
+  background-color: var(--container-color);
+  flex: 1 1 0;
+  border-radius: .75rem;
+  padding: .75rem;
+}
+.SSS__description{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+/*=============== Calendar ===============*/
+.calendar iframe{
+  width:100%;
+}
+
+/*=============== FOOTER ===============*/
+.footer__container{
+  background-color: #333333;
+  grid-template-columns: 1fr 1fr;
+}
+.footer__social{
+  grid-column-start:1;
+  grid-column-end:3;
+  background-color:black;
+}
+.footer__resources{
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap:.5rem;
+}
+.footer__resources div:first-child{
+  justify-self: start;
+}
+.footer__resources div:last-child{
+  justify-self: end;
+}
+.footer__resources div:nth-child(2){
+  justify-self: center;
+}
+.footer__social__list{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.footer__social__list.icons{
+  display: flex;
+  justify-items:left;
+}
+.footer__social__list.icons li{
+  margin-right: 2rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (min-width: 992px){
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .SSS__container{
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    column-gap: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (max-width: 800px){
+  .nav__logo{
+    width:200px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .footer__container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .footer__social{
+    grid-column-start:1;
+    grid-column-end:1;
+  }
+}
+
+/* For small devices */
+@media screen and (max-width: 460px){
+  .nav__menu{
+    padding: 1rem 1.5rem;
+    grid-template-columns:1fr;
+    overflow: scroll;
+  }
+  .nav__logo{
+    width:40px;
+    height:40px;
+    object-fit: cover;
+    object-position:0%;
+  }
+  a {
+    font-size: var(--small-font-size);
+  }
+  h2 {
+    font-size: var(--small-font-size);
+  }
+}
+
