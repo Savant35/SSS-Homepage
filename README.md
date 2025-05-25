@@ -8,7 +8,7 @@
   <p align="center">
    The creation of a mockup design for a school trio program utilizing HTML, CSS, and JavaScript constitutes a fundamental task in enhancing the program's user interface. 
     <br />
-    <a href="#demo">View Demo</a>
+    <a href="#preview">Preview</a>
     ·
     <a href="https://github.com/Savant35/SSS-Homepage/issues">Report Bug</a>
     ·
@@ -45,17 +45,16 @@
 ## Getting Started
 
 ### Prerequisites
-* pip3
-* python3
-* pyqt6
-* tmdb3api key 
+* Html/CSS
+* javascript
+
 
 ### Installation
 ```sh
-$ https://github.com/Savant35/SSS-Homepage.git
+$ git clone https://github.com/Savant35/SSS-Homepage.git
 
 ```
-### preview
+## Preview
 <img width="1422" alt="Screenshot 2023-02-26 at 11 05 51 PM" src="https://user-images.githubusercontent.com/121364807/221472135-110a9371-7f0a-4fe2-b80d-3939803da51c.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
